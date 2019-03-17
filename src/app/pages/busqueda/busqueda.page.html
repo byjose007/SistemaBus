@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>busqueda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="fixed">Origen:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="fixed">Destino:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+ 
+
+    <ion-item>
+        <ion-label>Ida</ion-label>
+        <ion-datetime cancel-text="Cancelar" 
+        done-text="Aceptar" 
+        monthNames="[Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]"                       
+        display-format="YYYY MMMM DD"
+        picker-format="MMMM DD"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Vuelta</ion-label>
+          <ion-datetime cancel-text="Cancelar" 
+                        done-text="Aceptar" 
+                        monthNames="[Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]"                       
+                        display-format="YYYY MMMM DD"
+                        picker-format="MMMM DD"></ion-datetime>
+        </ion-item> 
+  
+       
+        <ion-item>
+            <ion-label position="fixed">Pasajeros</ion-label>
+            <ion-input (click)="presentPopover($event)"></ion-input>
+          </ion-item>
+
+    
+</ion-content>
