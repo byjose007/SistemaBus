@@ -53,7 +53,7 @@ Para descargarnos el proyecto, desde la terminal
 
   windows && Linux:
   ```
-  git clone https://gitlab.com/cnppartners/idd.git
+  git clone https://github.com/byjose007/SistemaBus.git
   ```
   Una vez clonado el repositorio, nos situamos en la carpeta del  proyecto `idd-frontend`
   ```
