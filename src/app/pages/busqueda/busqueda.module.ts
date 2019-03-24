@@ -1,13 +1,13 @@
-import { PopoverSearchPage } from './../popover-search/popover-search.page';
-import { NgModule } from '@angular/core';
+import { BusquedaPage } from './busqueda.page';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
-import { BusquedaPage } from './busqueda.page';
+import { NgModule } from '@angular/core';
+import { PopoverSearchPage } from './../popover-search/popover-search.page';
 import { PopoverSearchPageModule } from '../popover-search/popover-search.module';
+import { RouterModule, Routes } from '@angular/router';
+
+
 
 const routes: Routes = [
   {
@@ -21,10 +21,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    PopoverSearchPageModule,
     RouterModule.forChild(routes),
-    
+
   ],
   entryComponents: [PopoverSearchPage],
-  declarations: [BusquedaPage,PopoverSearchPage]
+  declarations: [BusquedaPage]
 })
-export class BusquedaPageModule {}
+export class BusquedaPageModule { }
