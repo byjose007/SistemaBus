@@ -1,0 +1,16 @@
+
+.icon-ticket{
+    background: url('../../../assets/icon/ticket.svg');
+    display: block;
+    // text-indent: -9999px;
+    width: 22px;
+    height: 22px;
+    // background: url(kiwi.svg);
+    // background-size: 100px 82px;
+  }
+  
+
+  ion-tab-button {
+    --color-selected: var(--ion-color-danger);
+    // --background-focused: blue;
+  }
