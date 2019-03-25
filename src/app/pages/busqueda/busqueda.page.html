@@ -9,7 +9,7 @@
 
 
   
-<ion-content class="searchbar-results">
+<ion-content>
   <div class="cabecera">
 
     <div text-center>
@@ -20,9 +20,8 @@
   </div>
   <ion-card>
     <div class="autocomplete">
-      <ion-searchbar search-icon="locate" [(ngModel)]="origen" (ionInput)="getItems($event,'origin')"
-        (ionCancel)="showItemsOrigin = !showItemsOrigin" animated="true" placeholder="Origen"
-        debounce=500>
+      <ion-searchbar color="light" search-icon="locate" [(ngModel)]="origen" (ionInput)="getItems($event,'origin')"
+        (ionCancel)="showItemsOrigin = !showItemsOrigin"  placeholder="Origen">
       </ion-searchbar>
       <ion-list class="searchbar-results" *ngIf="showItemsOrigin">
         <ion-item *ngFor="let item of items" (click)="originSelected(item)">
@@ -32,9 +31,8 @@
     <!-- </div> -->
 
     <!-- <div class="autocomplete"> -->
-      <ion-searchbar search-icon="pin" [(ngModel)]="destino" (ionInput)="getItems($event,'destino')"
-        (ionCancel)="showItemsDestino = !showItemsDestino"  animated="true" placeholder="Destino"
-        debounce=500>
+      <ion-searchbar color="light" search-icon="pin" [(ngModel)]="destino" (ionInput)="getItems($event,'destino')"
+        (ionCancel)="showItemsDestino = !showItemsDestino"  placeholder="Destino" >
        
       </ion-searchbar>
       <ion-list class="searchbar-results" *ngIf="showItemsDestino">
@@ -44,26 +42,26 @@
       </ion-list>
     </div>
 
-    <ion-item>
+    <ion-item color="light">
       <ion-label>Ida</ion-label>
       <!-- <ion-icon name="pin" slot="start"></ion-icon> -->
-      <ion-icon name="arrow-forward" slot="start"></ion-icon>
+      <ion-icon color="secondary" name="arrow-forward" slot="start"></ion-icon>
       <ion-datetime [(ngModel)]="dateDeparture" (ionCancel)="clearDateDeparture()" cancel-text="Cancelar" done-text="Aceptar"
         [monthNames]="months"
         display-format="DD de MMMM" picker-format="YYYY/MMMM/DD"></ion-datetime>
     </ion-item>  
 
-    <ion-item>
+    <ion-item color="light">
       <ion-label>Vuelta</ion-label>
-      <ion-icon name="arrow-back" slot="start"></ion-icon>
+      <ion-icon color="secondary" name="arrow-back" slot="start"></ion-icon>
       <ion-datetime [(ngModel)]="dateReturn" (ionCancel)="clearDateReturn()" cancel-text="Cancelar" done-text="Aceptar"
         [monthNames]="months"
         display-format="DD de MMMM" picker-format="YYYY-MMMM-DD"></ion-datetime>
     </ion-item>
-
-    <ion-item>
+  
+    <ion-item class="item-radius" color="light">
       <ion-label position="fixed">{{totalPassengers}}</ion-label>
-      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-icon color="secondary" name="person" slot="start"></ion-icon>
       <ion-input (click)="presentModal()"></ion-input>
     </ion-item>
     <!-- TODO código promocional -->
@@ -77,30 +75,6 @@
 
 
 
-    <!-- <ion-tabs>
-        <ion-tab-bar slot="bottom">
-          <ion-tab-button tab="schedule">
-            <ion-icon name="calendar"></ion-icon>
-            <ion-label>Schedule</ion-label>
-            <ion-badge>6</ion-badge>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="speakers">
-            <ion-icon name="contacts"></ion-icon>
-            <ion-label>Speakers</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="map">
-            <ion-icon name="map"></ion-icon>
-            <ion-label>Map</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button tab="about">
-            <ion-icon name="information-circle"></ion-icon>
-            <ion-label>About</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs>
-  -->
+  
 
  </ion-content>

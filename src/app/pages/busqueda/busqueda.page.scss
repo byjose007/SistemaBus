@@ -204,7 +204,7 @@
 .cabecera {
 
   position: relative;
-  height: 150px;
+  height: 200px;
   background-color: var(--ion-color-primary);
 
   h1 {
@@ -276,6 +276,7 @@
   }
 
   ion-card.sc-ion-card-md-h.sc-ion-card-md-s {
+    border-radius: 35px 35px 0px 0px;
     padding-top: 20px;
     padding: 15px;
     display: flex;
@@ -284,5 +285,13 @@
     margin: 0 !important;
 }
 
+ion-item:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+ion-item:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 
   

@@ -1,16 +1,22 @@
 
 .icon-ticket{
-    background: url('../../../assets/icon/ticket.svg');
-    display: block;
-    // text-indent: -9999px;
+    display: block;   
     width: 22px;
     height: 22px;
-    // background: url(kiwi.svg);
-    // background-size: 100px 82px;
+    background-color: var(--ion-color-secondary);    
+    -webkit-mask-image: url('../../../assets/icon/ticket.svg');
+    mask-image: url('../../../assets/icon/ticket.svg');
+  }
+
+  .is-active{
+    background-color: var(--ion-color-danger);
   }
   
 
   ion-tab-button {
     --color-selected: var(--ion-color-danger);
+    --color: var(--ion-color-secondary);
     // --background-focused: blue;
   }
+
+//   ion-icon
