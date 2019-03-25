@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'horarios', loadChildren: './pages/horarios/horarios.module#HorariosPageModule' },
   { path: 'popover-search', loadChildren: './pages/popover-search/popover-search.module#PopoverSearchPageModule' },
+  { path: 'reservas', loadChildren: './pages/reservas/reservas.module#ReservasPageModule' },
   // { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' }
 ];
 

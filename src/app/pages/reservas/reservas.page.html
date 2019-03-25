@@ -1,0 +1,19 @@
+<ion-content>
+  <div class="cabecera">
+      <h1>Mis viajes</h1>
+  </div>
+  <ion-segment  value="proximos" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="proximos">
+          <ion-label>Próximos</ion-label>      
+        </ion-segment-button>
+      
+    <ion-segment-button value="archivados">
+      <ion-label>Archivados</ion-label>
+    </ion-segment-button>  
+  </ion-segment>
+
+  <div text-center>
+  <h1 *ngIf="isProximo && !existePasaje"> No tienes ningún viaje. </h1>
+  <p *ngIf="!isProximo">Tus billetes se archivaran aquí.</p>
+</div>
+</ion-content>
