@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HorariosPage implements OnInit {
 
+  data = {};
+
   constructor() { }
 
   ngOnInit() {

@@ -12,6 +12,7 @@
 
   h1 {
    @include content-center(24px);
+   margin-top: 0px !important; 
     // padding-top: 20px;
   }
   h2 {
@@ -26,6 +27,17 @@
     padding-top: 10px;
     @include content-center(30px);   
 
+  }
+
+  .logo-bus{
+    // display: block;
+    background-color: #ffffff;    
+    -webkit-mask-image: url('../../../assets/icon/bus.svg');
+    mask-image: url('../../../assets/icon/bus.svg');
+    width: 65px !important;
+    height: 65px !important;
+    display: inline-flex;
+      
   }
 }
 

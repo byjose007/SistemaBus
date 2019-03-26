@@ -12,3 +12,24 @@
     
        }
   }
+
+  .no-proximos-svg{
+    display: inline-block;
+    background-color: var(--ion-color-primary);    
+    -webkit-mask-image: url('../../../assets/icon/wallet.svg');
+    mask-image: url('../../../assets/icon/wallet.svg');
+    width: 85px !important;
+    height: 85px !important;
+    margin-top: 100px;
+  }
+
+  .archivados-svg{
+    display: inline-block;
+    background-color: var(--ion-color-primary);    
+    -webkit-mask-image: url('../../../assets/icon/tickets.svg');
+    mask-image: url('../../../assets/icon/tickets.svg');
+    width: 85px !important;
+    height: 85px !important;
+    margin-top: 100px;
+
+  }
