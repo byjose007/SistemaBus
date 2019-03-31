@@ -1,4 +1,6 @@
+import { HorariosService } from './../../services/horarios.service';
 import { Component, OnInit } from '@angular/core';
+import { log } from 'util';
 
 @Component({
   selector: 'app-horarios',
@@ -7,11 +9,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HorariosPage implements OnInit {
 
-  data = {};
+  data: any;
+  horarios: any;
 
-  constructor() { }
+  horariosDisponibles = [];
+
+  constructor(private horariosService: HorariosService) { }
 
   ngOnInit() {
+
+    let arrayEmpresas = [];
+
+    this.data = JSON.parse(sessionStorage.getItem('dataSearch'));
+    this.horarios = this.horariosService.getHorarios();
+
+    const rutas:any = Object.values(this.horarios).map((empresas: any) => empresas.rutas);
+
+    Object.values(rutas).map((ciudades:any) => {
+      Object.values(ciudades).map((ciudad: any) => {      
+        Object.values(ciudad).filter((val: any) => {
+          if (val.origen === this.data.origen && val.destino === this.data.destino) {
+              arrayEmpresas.push(ciudades);
+              this.horariosDisponibles.push(val);
+          }
+        });
+      })
+
+    });
+    console.log('disponibles', this.horariosDisponibles);
+    const idEmpresas = arrayEmpresas.filter((x, i, a) => a.indexOf(x) === i);
+    console.log(idEmpresas);
+
+    
+
+
   }
 
 }

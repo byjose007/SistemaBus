@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'horarios',
+        children: [
+          {
+            path: '',
+            loadChildren: '../horarios/horarios.module#HorariosPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/busqueda',
         pathMatch: 'full'
@@ -54,4 +63,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

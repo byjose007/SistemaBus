@@ -13,23 +13,21 @@
        }
   }
 
-  .no-proximos-svg{
+  @mixin ticket-svg($url) {
     display: inline-block;
     background-color: var(--ion-color-primary);    
-    -webkit-mask-image: url('../../../assets/icon/wallet.svg');
-    mask-image: url('../../../assets/icon/wallet.svg');
+    -webkit-mask-image: url($url);
+    mask-image: url($url);
     width: 85px !important;
     height: 85px !important;
     margin-top: 100px;
+      
+  }
+
+  .no-proximos-svg{
+      @include ticket-svg('../../../assets/icon/wallet.svg');
   }
 
   .archivados-svg{
-    display: inline-block;
-    background-color: var(--ion-color-primary);    
-    -webkit-mask-image: url('../../../assets/icon/tickets.svg');
-    mask-image: url('../../../assets/icon/tickets.svg');
-    width: 85px !important;
-    height: 85px !important;
-    margin-top: 100px;
-
+    @include ticket-svg('../../../assets/icon/tickets.svg');
   }
