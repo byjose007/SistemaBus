@@ -34,7 +34,7 @@ export class BusquedaPage implements OnInit {
   items: string[];
   showItemsOrigin = false;
   showItemsDestino = false;
-  totalPassengers = "Pasajeros";
+  totalPassengers:number;
   dataPassenger: any;
 
   constructor(
@@ -49,20 +49,18 @@ export class BusquedaPage implements OnInit {
   }
 
   initializeItems() {
+
     this.items = [
-      "Loja",
-      "Macará",
-      "Zapotillo",
-      "Alamor",
-      "Quito",
-      "Guayaquil",
-      "Cuenca",
-      "Ambato",
-      "Riobamba",
-      "Yanzatza",
-      "Machala",
-      "Zamora"
-    ];
+      'Loja',
+      'Zamora',
+      'Quito',
+      'Guayaquil',
+      'Ambato',
+      'Machala'
+    ]
+
+
+
   }
 
   originSelected(item: string) {
@@ -108,12 +106,7 @@ export class BusquedaPage implements OnInit {
     modal.onDidDismiss().then(data => {
       this.dataPassenger = data["data"]; // Here's your selected user!
       console.log(this.dataPassenger);
-      if (this.dataPassenger.totalPassengers > 1) {
-        this.totalPassengers =
-          this.dataPassenger.totalPassengers + " Pasajeros";
-      } else {
-        this.totalPassengers = this.dataPassenger.totalPassengers + " Pasajero";
-      }
+      this.totalPassengers = this.dataPassenger.totalPassengers;     
     });
     return await modal.present();
   }
