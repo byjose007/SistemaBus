@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'horarios', loadChildren: './pages/horarios/horarios.module#HorariosPageModule' },
   { path: 'popover-search', loadChildren: './pages/popover-search/popover-search.module#PopoverSearchPageModule' },
+  { path: 'detalle', loadChildren: './pages/detalle/detalle.module#DetallePageModule' },
 
 ];
 

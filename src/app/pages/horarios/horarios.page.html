@@ -3,10 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{data.origen}} - {{data.destino}}</ion-title>
+    <ion-title>{{ data.origen }} - {{ data.destino }}</ion-title>
     <ion-label text-wrap>
       <ion-text color="secondary">
-        <p> {{data.dateDeparture | date}}, {{data.total_passenger}}</p>
+        <p>
+          {{ data.dateDeparture | date }} - <ion-icon name="person"></ion-icon>
+          {{ data.total_passenger }}
+        </p>
       </ion-text>
     </ion-label>
   </ion-toolbar>
@@ -24,63 +27,70 @@
       <ion-label>Más rápido</ion-label>
     </ion-segment-button>
   </ion-segment>
-  <ion-card *ngFor="let item of horariosDisponibles">
+  <ion-card *ngFor="let ruta of horarios">
+    <ion-grid (click)="detalle(ruta)">
+      <ion-row>
+        <ion-col>
+          <img class="size-logo" src="{{ ruta.empresa.logo }}" />
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-label text-left>
+              <ion-text color="dark">
+                <h1>{{ ruta.horaSalida }}</h1>
+              </ion-text>
+              <ion-text color="secondary">
+                <p>{{ ruta.origen }} - {{ ruta.dirOrigen }}</p>
+              </ion-text>
+            </ion-label>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-label text-left>
+              <ion-text color="dark">
+                <h1>{{ ruta.horaLlegada }}</h1>
+              </ion-text>
+              <ion-text color="secondary">
+                <p>{{ ruta.destino }} - {{ ruta.dirDestino }}</p>
+              </ion-text>
+            </ion-label>
+          </ion-label>
+        </ion-col>
+        <ion-col text-right>
+          <ion-button expand="full" color="danger">$ {{ ruta.precio * data.total_passenger }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="footerCard">
       <ion-grid>
         <ion-row>
-          <ion-col>
-            <img class="size-logo" src="../../../assets/img/logos/cariamanga.jpg">
+          <ion-col>      
+              <ion-icon name="alarm"></ion-icon> {{ ruta.duracion }} -
+              {{ ruta.paradas }} paradas  
           </ion-col>
-          <ion-col>
-            <ion-label>              
-              <ion-label text-left>
-                <ion-text color="dark">
-                  <h2>{{item.horaSalida}}</h2>
-                </ion-text>
-                <ion-text  color="secondary">
-                  <p>{{item.origen}}</p>
-                </ion-text>
-              </ion-label>
 
-            </ion-label>
-          </ion-col>
           <ion-col>
-              <ion-label>              
-                <ion-label text-left>
-                  <ion-text color="dark">
-                    <h2>{{item.horaLlegada}}</h2>
-                  </ion-text>
-                  <ion-text color="secondary">
-                    <p>{{item.destino}}</p>
-                  </ion-text>
-                </ion-label>
-  
-              </ion-label>
-            </ion-col>
-          <ion-col>
-            <p><b>{{item.precio}}</b></p>
+                  Total: <ion-icon name="person"></ion-icon> {{ data.total_passenger }}
           </ion-col>
+          <ion-col text-right>
+            <ion-icon name="information-circle"></ion-icon>
+          </ion-col>
+
         </ion-row>
       </ion-grid>
-  
+    </div>
   </ion-card>
 
-  <div text-center *ngIf="horariosDisponibles.length <= 1"> 
-
-    <!-- <img src="assets/icon/searching.svg" alt=""> -->
+  <div text-center *ngIf="!horarios">
     <p class="searching-svg"></p>
-    
-
- 
-
     <ion-text>
       <h1 color="primary">No hemos encontrado ningún bus para está ruta</h1>
-    <p color="secondary">Pero puedes elegir otro origen y destino que hacemos </p>
-    
+      <p color="secondary">
+        Pero puedes elegir otro origen y destino que hacemos
+      </p>
     </ion-text>
-
     <ion-button color="danger">Buscar otro trayecto</ion-button>
-
   </div>
-
- 
 </ion-content>
