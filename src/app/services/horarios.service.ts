@@ -149,7 +149,7 @@ export class HorariosService {
           });
         });
         console.log(horarios);
-        debugger;
+        // debugger;
         console.log('ddddd');
         
         
