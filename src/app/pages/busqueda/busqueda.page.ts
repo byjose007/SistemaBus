@@ -123,7 +123,7 @@ export class BusquedaPage implements OnInit {
 
   onSearch() {
     const data = {
-
+      //TODO guardar lita de pasajeros con sus tipos
       'total_passenger': this.totalPassengers,
       'origen': this.origen,
       'destino': this.destino,

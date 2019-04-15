@@ -7,7 +7,9 @@ import { map } from "rxjs/operators";
   providedIn: "root"
 })
 export class HorariosService {
-  selectRuta:any;
+
+  //npm i --save firebase @angular/fire
+  selectRuta: any;
 
   horarios = {
     coop_loja: {
@@ -116,26 +118,86 @@ export class HorariosService {
     }
   };
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   getHorarios() {
-    let horarios: any;
+    let horarios = [];
+    let refRutas = this.firestore.collection("rutas");
 
-    return this.firestore.collection("rutas").snapshotChanges();
+    return refRutas.get().pipe(
+      map(actions => {
+        actions.forEach((a: any) => {
+          let emp: any = a.data();
+  
+          // if (emp.idEmpresa) {
+          //   emp.idEmpresa.get().then((empresa: any) => {
+          //     const dataEmpresa = empresa.data();
+          //     console.log("empresa", dataEmpresa);
+          //     horarios.push({empresa:dataEmpresa.nombre});
+
+          //   });
+          // }
+          refRutas.doc(a.id).collection("quito-loja").get().subscribe(collections => {
+            collections.forEach((doc: any) => {
+              let data = doc.data();
+              // console.log('id empresa',doc.idEmpresa);
+
+              // let empresa = this.firestore.collection(empresa)
+
+              horarios.push(data);
+            });
+          });
+        });
+        console.log(horarios);
+        debugger;
+        console.log('ddddd');
+        
+        
+        return horarios;
+      })
+    );
+    // return horarios;
+
+    // return this.firestore.collection("rutas").snapshotChanges().pipe(
+    //   map( actions =>{
+
+    //    return actions.map((a, i) => {
+    //     //  debugger;
+
+    //       const data: any = a.payload.doc.data();
+    //       console.log('llll',a.payload.doc.id);
+    //       // data.map(b =>{
+    //       //   console.log(b);
+
+    //       // })
+
+    //       // const id = a.payload.doc.id;
+    //       // console.log(data.empresa.id);
+    // obtener datos de una documeto de referencia
+    //       // data.empresa.get().then((resp: any) => {
+    //       //   this.horarios[i].empresa = resp.data();
+    //       // });
+    //       // return { id, ...data };
+    //     });
+    //     console.log("horarios", this.horarios);
+
+    //    } )
+    // );
   }
 
   setSelecRuta(ruta) {
     this.selectRuta = {};
     this.selectRuta = ruta;
-    let data: any = Object.assign(ruta);
-    let toDay = this.getToday();
-    data.hora = toDay.time;
-    data.fecha = toDay.date;
+
+    // let data: any = Object.assign(ruta);
+    // let toDay = this.getToday();
+    // data.hora = toDay.time;
+    // data.fecha = toDay.date;
 
     // this.firestore.collection("reservas").add(data);
   }
 
-  getSelectRuta(){
+  getSelectRuta() {
     return this.selectRuta;
   }
 

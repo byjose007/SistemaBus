@@ -9,7 +9,7 @@ import { log } from "util";
   styleUrls: ["./horarios.page.scss"]
 })
 export class HorariosPage implements OnInit {
-  data: any;
+  dataSearch: any;
   horarios: any;
   horariosDisponibles = [];
 
@@ -18,8 +18,8 @@ export class HorariosPage implements OnInit {
   ngOnInit() {
     // let arrayEmpresas = [];
 
-    this.data = JSON.parse(sessionStorage.getItem("dataSearch"));
-    console.log(this.data);
+    this.dataSearch = JSON.parse(sessionStorage.getItem("dataSearch"));
+    console.log(this.dataSearch);
 
     // this.horarios = this.horariosService.getHorarios();
 
@@ -41,23 +41,18 @@ export class HorariosPage implements OnInit {
     // console.log(idEmpresas);
 
     this.horariosService.getHorarios().subscribe(data => {
-      this.horarios = data.map((a, i) => {
-        const data: any = a.payload.doc.data();
-        const id = a.payload.doc.id;
-        console.log(data.empresa.id);
-        data.empresa.get().then((resp: any) => {
-          this.horarios[i].empresa = resp.data();
-        });
-        return { id, ...data };
-      });
-      console.log("horarios", this.horarios);
+      this.horarios = data;
+      console.log('horarios',this.horarios);
+      
     });
   }
 
 
   selectRuta(ruta){
     this.horariosService.setSelecRuta(ruta);
-    this.router.navigate(['/infoPersonal']);
+    console.log(ruta);
+    
+    this.router.navigate(['/info-personal']);
 
   }
 }

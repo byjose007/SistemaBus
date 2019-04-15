@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'horarios', loadChildren: './pages/horarios/horarios.module#HorariosPageModule' },
   { path: 'popover-search', loadChildren: './pages/popover-search/popover-search.module#PopoverSearchPageModule' },
   { path: 'detalle', loadChildren: './pages/detalle/detalle.module#DetallePageModule' },
+  { path: 'info-personal', loadChildren: './pages/info-personal/info-personal.module#InfoPersonalPageModule' },
 
 ];
 
