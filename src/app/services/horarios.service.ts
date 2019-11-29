@@ -120,15 +120,19 @@ export class HorariosService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getHorarios() {
+  getRutas(origen: string, destino: string) {
     let horarios = [];
     let refRutas = this.firestore.collection("rutas");
+
+    let ruta = `${origen.toLowerCase()}-${destino.toLowerCase()}`;
+    console.log(ruta);
+    
 
     return refRutas.get().pipe(
       map(actions => {
         actions.forEach((a: any) => {
           let emp: any = a.data();
-  
+
           // if (emp.idEmpresa) {
           //   emp.idEmpresa.get().then((empresa: any) => {
           //     const dataEmpresa = empresa.data();
@@ -137,12 +141,18 @@ export class HorariosService {
 
           //   });
           // }
-          refRutas.doc(a.id).collection("quito-loja").get().subscribe(collections => {
-            collections.forEach((doc: any) => {
-              let data = doc.data();
-              // console.log('id empresa',doc.idEmpresa);
+          refRutas.doc(a.id).collection(ruta).get().subscribe(collections => {
+            collections.forEach((horario: any) => {
+              let data = horario.data();
+              let test;
+              data.idEmpresa.get().then(res => {
+                test = res.data()
+                console.log('test',test);
+              });
 
-              // let empresa = this.firestore.collection(empresa)
+         
+
+              
 
               horarios.push(data);
             });
@@ -151,8 +161,8 @@ export class HorariosService {
         console.log(horarios);
         // debugger;
         console.log('ddddd');
-        
-        
+
+
         return horarios;
       })
     );

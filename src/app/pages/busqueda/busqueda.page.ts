@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PopoverController, ModalController } from "@ionic/angular";
 import { PopoverSearchPage } from "../popover-search/popover-search.page";
 import { Router } from '@angular/router';
+import * as faker from 'faker';
 
 @Component({
   selector: "app-busqueda",
@@ -10,12 +11,13 @@ import { Router } from '@angular/router';
 })
 export class BusquedaPage implements OnInit {
 
-  data:any;
+  data: any;
   total_passenger: number;
   origen = "";
   destino = "";
   dateDeparture: any;
   dateReturn: any;
+  testFaker: any;
   months = [
     "Enero",
     "Febrero",
@@ -34,7 +36,7 @@ export class BusquedaPage implements OnInit {
   items: string[];
   showItemsOrigin = false;
   showItemsDestino = false;
-  totalPassengers:number;
+  totalPassengers: number;
   dataPassenger: any;
 
   constructor(
@@ -106,7 +108,7 @@ export class BusquedaPage implements OnInit {
     modal.onDidDismiss().then(data => {
       this.dataPassenger = data["data"]; // Here's your selected user!
       console.log(this.dataPassenger);
-      this.totalPassengers = this.dataPassenger.totalPassengers;     
+      this.totalPassengers = this.dataPassenger.totalPassengers;
     });
     return await modal.present();
   }
@@ -119,7 +121,15 @@ export class BusquedaPage implements OnInit {
     this.dateReturn = null;
   }
 
-  addCodigo() { }
+  addCodigo() {
+this.testFaker = {
+ name: faker.name.findName(),
+ imagen: faker.hacker.adjective()
+}
+
+console.log(this.testFaker);
+
+   }
 
   onSearch() {
     const data = {
@@ -137,12 +147,12 @@ export class BusquedaPage implements OnInit {
   ngOnInit() {
     this.data = JSON.parse(sessionStorage.getItem('dataSearch'));
     console.log(this.data);
-    if(this.data){
+    if (this.data) {
       this.totalPassengers = this.data.total_passenger;
       this.dateDeparture = this.data.dateDeparture;
       this.destino = this.data.destino;
-      this.origen = this.data.origen;    
+      this.origen = this.data.origen;
     }
 
-   }
+  }
 }

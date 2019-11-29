@@ -19,9 +19,9 @@ export class HorariosPage implements OnInit {
     // let arrayEmpresas = [];
 
     this.dataSearch = JSON.parse(sessionStorage.getItem("dataSearch"));
-    console.log(this.dataSearch);
+    // console.log(this.dataSearch);
 
-    // this.horarios = this.horariosService.getHorarios();
+    // this.horarios = this.horariosService.getRutas(this.dataSearch.origen, this.dataSearch.destino);
 
     // const rutas:any = Object.values(this.horarios).map((empresas: any) => empresas.rutas);
 
@@ -40,9 +40,12 @@ export class HorariosPage implements OnInit {
     // const idEmpresas = arrayEmpresas.filter((x, i, a) => a.indexOf(x) === i);
     // console.log(idEmpresas);
 
-    this.horariosService.getHorarios().subscribe(data => {
+    this.horariosService.getRutas(this.dataSearch.origen, this.dataSearch.destino).subscribe((data:any) => {
       this.horarios = data;
+      // let empresa = data.idEmpresa.get().then(res => res.data());
       console.log('horarios',this.horarios);
+      // console.log('empres', empresa);
+      
       
     });
   }
