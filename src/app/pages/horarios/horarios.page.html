@@ -1,9 +1,96 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>horarios</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ dataSearch.origen }} - {{ dataSearch.destino }}</ion-title>
+    <ion-label>
+      <ion-text color="secondary" text-left>
+        <p>
+          {{ dataSearch.dateDeparture | date }} - <ion-icon name="person"></ion-icon>
+          {{ dataSearch.total_passenger }}
+        </p>
+      </ion-text>
+    </ion-label>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-segment value="hora">
+    <ion-segment-button selected value="hora">
+      <ion-label>Hora salida</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="barato">
+      <ion-label>Mas barato</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="tiempo">
+      <ion-label>Más rápido</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-card *ngFor="let ruta of horarios">
+    <ion-grid (click)="selectRuta(ruta)">
+      <ion-row>
+        <ion-col>
+          <img class="size-logo" src="assets/img/logos/cariamanga.jpg" />
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-label text-left>
+              <ion-text color="dark">
+                <h1>{{ ruta.horaSalida }}</h1>
+              </ion-text>
+              <ion-text color="secondary">
+                <p>{{ ruta.origen }} - {{ ruta.dirOrigen }}</p>
+              </ion-text>
+            </ion-label>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-label text-left>
+              <ion-text color="dark">
+                <h1>{{ ruta.horaLlegada }}</h1>
+              </ion-text>
+              <ion-text color="secondary">
+                <p>{{ ruta.destino }} - {{ ruta.dirDestino }}</p>
+              </ion-text>
+            </ion-label>
+          </ion-label>
+        </ion-col>
+        <ion-col text-right>
+          <ion-button expand="full" color="danger">$ {{ ruta.precio * dataSearch.total_passenger }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
+    <div class="footerCard">
+      <ion-grid>
+        <ion-row>
+          <ion-col>      
+              <ion-icon name="alarm"></ion-icon> {{ ruta.duracion }} -
+              {{ ruta.paradas }} paradas  
+          </ion-col>
+
+          <ion-col>
+                  Total: <ion-icon name="person"></ion-icon> {{ dataSearch.total_passenger }}
+          </ion-col>
+          <ion-col text-right>
+            <ion-icon name="information-circle"></ion-icon>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-card>
+
+  <div text-center *ngIf="!horarios">
+    <p class="searching-svg"></p>
+    <ion-text>
+      <h1 color="primary">No hemos encontrado ningún bus para está ruta</h1>
+      <p color="secondary">
+        Pero puedes elegir otro origen y destino
+      </p>
+    </ion-text>
+    <ion-button [routerLink]="['/']" color="danger">Buscar otro trayecto</ion-button>
+  </div>
 </ion-content>

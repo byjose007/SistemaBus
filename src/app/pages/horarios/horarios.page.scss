@@ -1,0 +1,21 @@
+.size-logo{
+    width: 80px;
+    height: auto;
+}
+
+.footerCard{
+    border-top: 0.3px solid #aab2c9; 
+}
+
+
+.searching-svg{
+
+    display: inline-block;
+    background-color: var(--ion-color-primary);    
+    -webkit-mask-image: url('../../../assets/icon/searching.svg');
+    mask-image: url('../../../assets/icon/searching.svg');
+    width: 125px !important;
+    height: 125px !important;
+    // text-align: center;
+    margin-top: 100px;
+}

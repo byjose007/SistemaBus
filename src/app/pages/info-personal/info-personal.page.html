@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>infoPersonal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Información del pasajero</h1>
+
+  <ion-card *ngFor="let data of arrayOne(dataSearch.total_passenger);let i = index">
+    <ion-card-header>
+      <ion-card-title > 
+         <div *ngIf="i == 0"> Pasajero Principal</div>
+         <div *ngIf="i != 0"> Pasajero {{i +1 }}</div>
+         
+        <!-- <ion-text text-right>ADULTO</ion-text> -->
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Apellidos</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="stacked">Número de Cédula/Pasaporte</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button color="danger" (click)="pagar()" size="large" fill="solid" expand="block">
+      Coninuar con el pago
+  </ion-button>
+
+</ion-content>

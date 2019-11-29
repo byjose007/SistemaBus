@@ -1,46 +1,78 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>busqueda</ion-title>
+    <ion-title>GoTravel</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
-  <ion-item>
-    <ion-label position="fixed">Origen:</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="fixed">Destino:</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
- 
 
-    <ion-item>
-        <ion-label>Ida</ion-label>
-        <ion-datetime cancel-text="Cancelar" 
-        done-text="Aceptar" 
-        monthNames="[Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]"                       
-        display-format="YYYY MMMM DD"
-        picker-format="MMMM DD"></ion-datetime>
-      </ion-item>
-
-      <ion-item>
-          <ion-label>Vuelta</ion-label>
-          <ion-datetime cancel-text="Cancelar" 
-                        done-text="Aceptar" 
-                        monthNames="[Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]"                       
-                        display-format="YYYY MMMM DD"
-                        picker-format="MMMM DD"></ion-datetime>
-        </ion-item> 
   
-       
-        <ion-item>
-            <ion-label position="fixed">Pasajeros</ion-label>
-            <ion-input (click)="presentPopover($event)"></ion-input>
-          </ion-item>
+<ion-content>
+  <div class="cabecera">
 
-    
-</ion-content>
+    <div text-center>
+      <!-- <ion-icon class="logo" name="bus" color="light"></ion-icon> -->    
+          <p class="logo-bus"></p>
+    </div>
+    <h1 text-center>MI VIAJE</h1>
+    <h2>¿Dónde quieres ir?</h2>
+  </div>
+  <ion-card>
+    <div class="autocomplete">
+      <ion-searchbar color="light" search-icon="locate" [(ngModel)]="origen" (ionInput)="getItems($event,'origin')"
+        (ionCancel)="showItemsOrigin = !showItemsOrigin"  placeholder="Origen">
+      </ion-searchbar>
+      <ion-list class="searchbar-results" *ngIf="showItemsOrigin">
+        <ion-item *ngFor="let item of items" (click)="originSelected(item)">
+          {{item}}
+        </ion-item>
+      </ion-list>
+    <!-- </div> -->
+
+    <!-- <div class="autocomplete"> -->
+      <ion-searchbar color="light" search-icon="pin" [(ngModel)]="destino" (ionInput)="getItems($event,'destino')"
+        (ionCancel)="showItemsDestino = !showItemsDestino"  placeholder="Destino" >
+       
+      </ion-searchbar>
+      <ion-list class="searchbar-results" *ngIf="showItemsDestino">
+        <ion-item *ngFor="let item of items" (click)="destinoSelected(item)">
+          {{item}}
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <ion-item color="light">
+      <ion-label>Ida</ion-label>
+      <!-- <ion-icon name="pin" slot="start"></ion-icon> -->
+      <ion-icon color="secondary" name="arrow-forward" slot="start"></ion-icon>
+      <ion-datetime [(ngModel)]="dateDeparture" (ionCancel)="clearDateDeparture()" cancel-text="Cancelar" done-text="Aceptar"
+        [monthNames]="months"
+        display-format="DD de MMMM" picker-format="YYYY/MMMM/DD"></ion-datetime>
+    </ion-item>  
+
+    <ion-item color="light">
+      <ion-label>Vuelta</ion-label>
+      <ion-icon color="secondary" name="arrow-back" slot="start"></ion-icon>
+      <ion-datetime [(ngModel)]="dateReturn" (ionCancel)="clearDateReturn()" cancel-text="Cancelar" done-text="Aceptar"
+        [monthNames]="months"
+        display-format="DD de MMMM" picker-format="YYYY-MMMM-DD"></ion-datetime>
+    </ion-item>
+  
+    <ion-item class="item-radius" color="light">
+      <ion-label position="fixed">{{totalPassengers}}</ion-label>
+      <ion-icon color="secondary" name="person" slot="start"></ion-icon>
+      <ion-input (click)="presentModal()"></ion-input>
+    </ion-item>
+    <!-- TODO código promocional -->
+    <!-- <ion-item text-center>
+        <ion-label (click)="addCodigo()">Código promocional</ion-label>
+      </ion-item> -->
+    <br><br>
+
+    <ion-button shape="round" color="danger" (click)="onSearch()">Búsqueda</ion-button>
+  </ion-card>
+
+  <ion-button shape="round" color="danger" (click)="addCodigo()">random</ion-button>
+ </ion-content>

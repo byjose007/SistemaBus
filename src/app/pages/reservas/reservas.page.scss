@@ -1,0 +1,34 @@
+.cabecera{
+    width: 100%;
+    height: 200px;
+    // background-color: var(--ion-color-primary);
+    background-image: linear-gradient(to bottom left, #fa6b6b -3% ,#253064 );
+    padding-left:  15px;   
+
+    h1 {
+        color: #f4f5f8;
+        margin-top: 0px !important; 
+        padding-top: 20px;
+        // padding-left:  15px;
+    
+       }
+  }
+
+  @mixin ticket-svg($url) {
+    display: inline-block;
+    background-color: var(--ion-color-primary);    
+    -webkit-mask-image: url($url);
+    mask-image: url($url);
+    width: 85px !important;
+    height: 85px !important;
+    margin-top: 100px;
+      
+  }
+
+  .no-proximos-svg{
+      @include ticket-svg('../../../assets/icon/wallet.svg');
+  }
+
+  .archivados-svg{
+    @include ticket-svg('../../../assets/icon/tickets.svg');
+  }

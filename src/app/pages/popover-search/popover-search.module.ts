@@ -7,21 +7,21 @@ import { IonicModule } from '@ionic/angular';
 
 import { PopoverSearchPage } from './popover-search.page';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: PopoverSearchPage
-  }
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: PopoverSearchPage
+//   }
+// ];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    // RouterModule.forChild(routes)
   ],
-  entryComponents: [PopoverSearchPage],
+  // entryComponents: [PopoverSearchPage],
   declarations: [PopoverSearchPage]
 })
 export class PopoverSearchPageModule {}
