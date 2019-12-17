@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-back-button></ion-back-button>
     <ion-title>detalle</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -68,6 +69,6 @@
   </div>
     
 
-    <qrcode [qrdata]="'Your QR code data string'" [size]="256" [level]="'M'"></qrcode>
+    <qrcode [qrdata]="dataQR" [size]="256" [level]="'M'"></qrcode>
 
 </ion-content>

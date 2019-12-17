@@ -1,7 +1,16 @@
-.size-logo{
-    width: 80px;
-    height: auto;
-}
+// .size-logo{
+//     width: 80px;
+//     height: auto;
+// }
+
+img.size-logo {
+    width: 50px;
+    height: 45px;
+    // padding-left: 10px;
+    border-radius: 100px;
+    // margin-left: 15%
+   
+  }
 
 .footerCard{
     border-top: 0.3px solid #aab2c9; 
@@ -18,4 +27,12 @@
     height: 125px !important;
     // text-align: center;
     margin-top: 100px;
+}
+
+span.salida {
+    font-size: 1.5em;
+}
+
+span.llegada {
+    font-size: 1.5em;
 }

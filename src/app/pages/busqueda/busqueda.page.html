@@ -61,9 +61,10 @@
     </ion-item>
   
     <ion-item class="item-radius" color="light">
-      <ion-label position="fixed">{{totalPassengers}}</ion-label>
+        <ion-label>Total Pasajeros</ion-label>
+      <!-- <ion-label position="fixed">{{totalPassengers}}</ion-label> -->
       <ion-icon color="secondary" name="person" slot="start"></ion-icon>
-      <ion-input (click)="presentModal()"></ion-input>
+      <ion-input placeholder="Total pasajeros" (click)="presentModal()" value="{{totalPassengers}}"></ion-input>
     </ion-item>
     <!-- TODO código promocional -->
     <!-- <ion-item text-center>

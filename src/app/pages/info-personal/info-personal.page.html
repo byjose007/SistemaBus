@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-back-button></ion-back-button>
     <ion-title>infoPersonal</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,13 +8,91 @@
 <ion-content padding>
   <h1>Información del pasajero</h1>
 
-  <ion-card *ngFor="let data of arrayOne(dataSearch.total_passenger);let i = index">
+  <form [formGroup]="form" (ngSubmit)="manage(form.value)">
+    <ion-list margin-bottom>     
+      <div formArrayName="passengers" margin-bottom>
+        <!-- Assign a FormGroupName property binding to track
+                 and manage each separate generated input field.
+                 Also iterate through the passengers FormArray to
+                 correctly track/render new input fields against
+                 existing fields -->
+        <section
+          [formGroupName]="i"
+          *ngFor="let tech of form.controls.passengers.controls; let i = index"
+        >
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                <div *ngIf="i == 0">Pasajero Principal</div>
+                <div *ngIf="i != 0">Pasajero {{i + 1 }}</div>
+              </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="stacked">Nombre</ion-label>
+                <ion-input formControlName="nombres"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked" >Apellidos</ion-label>
+                <ion-input formControlName="apellidos"></ion-input>
+              </ion-item>            
+              <ion-item>
+                <ion-label position="stacked">Número de Cédula/Pasaporte</ion-label>
+                <ion-input formControlName="identificacion"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="stacked">Email</ion-label>
+                  <ion-input formControlName="email"></ion-input>
+                </ion-item>
+            </ion-card-content>
+          </ion-card>
+
+          <!-- Allow generated input field to be removed -->
+          <!-- <span
+              float-right
+              ion-button
+              icon-left
+              clear
+              *ngIf="form.controls.passengers.length > 1"
+              (click)="removeInputField(i)"
+            >
+              <ion-icon name="close"></ion-icon>
+              Remove
+            </span> -->
+        </section>
+      </div>
+
+      <!-- Allow new input field to be generated/added -->
+      <span ion-button float-left icon-left clear (click)="addNewInputField()">
+        <ion-icon name="add"></ion-icon>
+        Add a new technology
+      </span>
+    </ion-list>
+
+    <!-- Only allow form to be submitted IF validation criteria for
+              input fields has been successfully passed -->
+    <button
+      ion-button
+      block
+      margin-top
+      color="primary"
+      text-center
+      [disabled]="!form.valid"
+    >
+      Submit
+    </button>
+  </form>
+
+  <!-- <ion-card
+    *ngFor="let data of arrayOne(dataSearch.total_passenger);let i = index"
+  >
     <ion-card-header>
-      <ion-card-title > 
-         <div *ngIf="i == 0"> Pasajero Principal</div>
-         <div *ngIf="i != 0"> Pasajero {{i +1 }}</div>
-         
-        <!-- <ion-text text-right>ADULTO</ion-text> -->
+      <ion-card-title>
+        <div *ngIf="i == 0">Pasajero Principal</div>
+        <div *ngIf="i != 0">Pasajero {{i +1 }}</div>
+
+  
       </ion-card-title>
     </ion-card-header>
 
@@ -31,14 +110,19 @@
         <ion-input></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label position="stacked">Número de Cédula/Pasaporte</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
+        <ion-label position="stacked">Número de Cédula/Pasaporte</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
-  <ion-button color="danger" (click)="pagar()" size="large" fill="solid" expand="block">
-      Coninuar con el pago
+  <ion-button
+    color="danger"
+    (click)="pagar()"
+    size="large"
+    fill="solid"
+    expand="block"
+  >
+    Coninuar con el pago
   </ion-button>
-
 </ion-content>

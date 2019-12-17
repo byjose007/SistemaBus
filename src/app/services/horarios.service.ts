@@ -146,8 +146,8 @@ export class HorariosService {
               let data = horario.data();
               let test;
               data.idEmpresa.get().then(res => {
-                test = res.data()
-                console.log('test',test);
+                data.empresa = res.data();
+                console.log('test',data);
               });
 
          

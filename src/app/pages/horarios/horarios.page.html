@@ -30,44 +30,40 @@
   <ion-card *ngFor="let ruta of horarios">
     <ion-grid (click)="selectRuta(ruta)">
       <ion-row>
-        <ion-col>
-          <img class="size-logo" src="assets/img/logos/cariamanga.jpg" />
+        <ion-col size="3">
+          <img class="size-logo" src="{{ruta.empresa?.logo}}" />
         </ion-col>
-        <ion-col>
-          <ion-label>
-            <ion-label text-left>
-              <ion-text color="dark">
-                <h1>{{ ruta.horaSalida }}</h1>
+        <ion-col size="6">
+         
+          
+              <ion-text class="ion-text-center">
+                <div> <span color="primary" class="salida">{{ ruta.horaSalida }}</span> <span> -{{ ruta.duracion }}- </span> <span class="llegada" color="primary">{{ ruta.horaLlegada }}</span></div>
               </ion-text>
-              <ion-text color="secondary">
+             
+              <!-- <ion-text color="secondary">
                 <p>{{ ruta.origen }} - {{ ruta.dirOrigen }}</p>
-              </ion-text>
-            </ion-label>
-          </ion-label>
+              </ion-text> -->
+      
+            
+          
         </ion-col>
-        <ion-col>
-          <ion-label>
-            <ion-label text-left>
-              <ion-text color="dark">
-                <h1>{{ ruta.horaLlegada }}</h1>
-              </ion-text>
-              <ion-text color="secondary">
-                <p>{{ ruta.destino }} - {{ ruta.dirDestino }}</p>
-              </ion-text>
-            </ion-label>
-          </ion-label>
-        </ion-col>
-        <ion-col text-right>
-          <ion-button expand="full" color="danger">$ {{ ruta.precio * dataSearch.total_passenger }}</ion-button>
+
+     
+   
+        <ion-col size="3" text-right>
+            <span>$ {{ ruta.precio * dataSearch.total_passenger }}</span>
+
+          <!-- <ion-button expand="full" color="danger">$ {{ ruta.precio * dataSearch.total_passenger }}</ion-button> -->
         </ion-col>
       </ion-row>
+
+  
     </ion-grid>
 
     <div class="footerCard">
       <ion-grid>
         <ion-row>
           <ion-col>      
-              <ion-icon name="alarm"></ion-icon> {{ ruta.duracion }} -
               {{ ruta.paradas }} paradas  
           </ion-col>
 

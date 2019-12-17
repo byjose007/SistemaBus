@@ -53,9 +53,9 @@ export class HorariosPage implements OnInit {
 
   selectRuta(ruta){
     this.horariosService.setSelecRuta(ruta);
-    console.log(ruta);
+    console.log('ruta select', ruta);
     
-    this.router.navigate(['/info-personal']);
+    this.router.navigate(['info-personal']);
 
   }
 }
